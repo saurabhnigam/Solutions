@@ -27,7 +27,7 @@ time is a valid time in the form "HH:MM".
 0 <= MM < 60
 ****/
 
-class Solution {
+class NextClosestTime {
     public String nextClosestTime(String s) {
         TreeSet<Integer> ts = new TreeSet();
         int[] t = new int[4];

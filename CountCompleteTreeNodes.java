@@ -46,6 +46,7 @@ The tree is guaranteed to be complete.
  *     }
  * }
  */
+//O(n) solution
 class CountCompleteTreeNodes {
     int count =0;
     public int countNodes(TreeNode root) {

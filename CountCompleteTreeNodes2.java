@@ -34,6 +34,7 @@ The tree is guaranteed to be complete.
  *     }
  * }
  */
+//O(log(n)^2) solution bcoz halving the tree takes o(log n) steps & each step takes O(2logn) time (beacuse left & riht heih takes O logn time step)
 class Solution {
     public int countNodes(TreeNode root) {
         return traverse(root,-1,-1);

@@ -39,9 +39,17 @@ positions[i].length == 2
 Follow up: Could you solve it in time complexity O(k log(mn)), where k == positions.length?
 
 My solution couldn ot clear all testcases
+
+Time Complexity should be k*4(four directions)*2(to find tree parent)
+SC:O(mn)
+https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/UnionFind.pdf
+https://stackoverflow.com/questions/6342967/why-is-the-ackermann-function-related-to-the-amortized-complexity-of-union-find
+https://stackoverflow.com/questions/71453109/is-this-union-find-really-on-as-they-claim
+https://www.geeksforgeeks.org/union-by-rank-and-path-compression-in-union-find-algorithm/
+https://leetcode.com/problems/number-of-islands-ii/discuss/2108226/Clean-Readable-Code-oror-Union-Find-and-Dictionary-oror-O(k)-time-complexity-and-O(k)-space-complexity
 ******/
 
-class Solution {
+class NumberOfIslands2 {
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         int islands = 0;
         List<Integer> islandList = new ArrayList();
@@ -54,7 +62,7 @@ class Solution {
             Arrays.fill(matrix[i], -1);
         }
         
-        for(int i =0; i<positions.length; i++){
+        for(int i =0; i<positions.length; i++){ //O(positions*4*2)
             int[] pair = positions[i];
             int r = pair[0];
             int c = pair[1];
@@ -76,7 +84,7 @@ class Solution {
         int[][] dirs = {{0,1}, {0,-1}, {1,0}, {-1,0}};
         System.out.println("inserting  at "+r+","+c+" islands ="+islands+" parent ="+Arrays.toString(parent));
         
-        for(int i =0;i<dirs.length; i++){
+        for(int i =0;i<dirs.length; i++){. //O(4*2)
             int rHash = r+ dirs[i][0];
             int cHash = c+ dirs[i][1];
             
@@ -84,7 +92,7 @@ class Solution {
                 
                 if(m[r][c] == -1 && m[rHash][cHash]>=0){
                     surroundedByWater = false;
-                    m[r][c] = findParent(m[rHash][cHash], parent); //parent of adjacent to new cell
+                    m[r][c] = findParent(m[rHash][cHash], parent); //parent of adjacent to new cell .O(2) because it only takes max 2 steps to find parent
                     parent[r*n+c] = m[r][c];
                     rank[m[r][c]]++; //now parent of r,c & rHash, cHash is same increment their parents rank
                 }else if(m[r][c] >= 0 && m[rHash][cHash] >= 0 && m[rHash][cHash] != m[r][c]){
@@ -127,7 +135,7 @@ class Solution {
         return true;
     }
     
-    private int findParent(int pos, int[] parent){
+    private int findParent(int pos, int[] parent){//O(2) because it only takes max 2 steps to find parent using Path Compression
         if(parent[pos] == -1){
             return pos; //is absolute parent/root Node
         }else{

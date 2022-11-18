@@ -33,7 +33,7 @@ All the integers in s are in the range [1, 300].
 ***/
 
 class DecodeString {
-    public String decodeString(String s) {  //TC O(n) SC O(n)
+    public String decodeString(String s) {  //TC O(Length of Output String) as we need to repeat for max_digit times SC O(n)
         Stack<String> stack = new Stack();
         for(int i =0; i<s.length(); i++){
             char c = s.charAt(i);

@@ -39,7 +39,7 @@ words[i] consists of only lowercase English letters.
 All words[i] are unique.
 
 Incorrect Sollution
-TC : 
+TC : words^(word.length) beacuse at most length of tree would be 'word.length' & each level will have 'words' child
 *****/
 
 class WordSquares {

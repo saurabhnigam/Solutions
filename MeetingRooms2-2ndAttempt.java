@@ -22,14 +22,14 @@ Constraints:
 *****/
 
 class MeetingRooms2-2ndAttempt {
-    //TC O(n)
+    //TC O(nlogn)
     //SC O(n)
     public int minMeetingRooms(int[][] intervals) {
         Map<Integer, List<Character>> intervalMap = new TreeMap();
         //create an interval map with open close positions
         for(int[] interval : intervals){ //O(n)
-            appendInterval(intervalMap, interval[0], 'o');
-            appendInterval(intervalMap, interval[1], 'c');
+            appendInterval(intervalMap, interval[0], 'o'); //logn
+            appendInterval(intervalMap, interval[1], 'c'); //logn
         }
 
         int currOpen = 0;
